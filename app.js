@@ -5,7 +5,16 @@ const faceApiService = require("./faceapiService");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(fileUpload());
+// CORS
+app.use(cors());
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+    createParentPath: true,
+  })
+);
 
 app.post("/upload", async (req, res) => {
   const { file, file2 } = req.files;
