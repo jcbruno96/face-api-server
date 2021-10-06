@@ -1,0 +1,20 @@
+{
+  "name": "face-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.9.0",
+    "@tensorflow/tfjs-node": "^3.9.0",
+    "@vladmandic/face-api": "^1.5.4",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "face-api.js": "^0.22.2"
+  }
+}
