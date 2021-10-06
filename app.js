@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const faceApiService = require("./faceapiService");
 
@@ -8,13 +9,7 @@ const port = process.env.PORT || 3000;
 // CORS
 app.use(cors());
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-    createParentPath: true,
-  })
-);
+app.use(fileUpload());
 
 app.post("/upload", async (req, res) => {
   const { file, file2 } = req.files;
