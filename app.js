@@ -12,6 +12,8 @@ app.use(cors());
 app.use(fileUpload());
 
 app.post("/upload", async (req, res) => {
+  console.log("Request: ", req);
+
   if (!req.files)
     return res.status(400).json({
       message: "Files required",
