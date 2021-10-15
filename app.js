@@ -12,7 +12,7 @@ app.use(cors());
 app.use(fileUpload());
 
 app.post("/upload", async (req, res) => {
-  console.log("Request: ", req);
+  console.log("Request: ", req.files);
 
   if (!req.files)
     return res.status(400).json({
@@ -23,7 +23,7 @@ app.post("/upload", async (req, res) => {
 
   if (!file || !file2)
     return res.status(400).json({
-      message: "Files required",
+      message: "File required",
     });
 
   const similarity = await faceApiService.detect(file.data, file2.data);
