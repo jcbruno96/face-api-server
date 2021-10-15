@@ -12,12 +12,22 @@ app.use(cors());
 app.use(fileUpload());
 
 app.post("/upload", async (req, res) => {
+  if (!req.files)
+    return res.status(400).json({
+      message: "Files required",
+    });
+
   const { file, file2 } = req.files;
+
+  if (!file || !file2)
+    return res.status(400).json({
+      message: "Files required",
+    });
 
   const similarity = await faceApiService.detect(file.data, file2.data);
 
   res.json({
-    "Misma persona": similarity,
+    similarity,
   });
 });
 
