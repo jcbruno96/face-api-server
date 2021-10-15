@@ -31,6 +31,12 @@ app.post("/upload", async (req, res) => {
   });
 });
 
+app.post("/test", async (req, res) => {
+  res.json({
+    message: "Test working",
+  });
+});
+
 app.listen(port, () => {
   console.log("Server started on port" + port);
 });
