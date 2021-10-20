@@ -36,6 +36,9 @@ app.post("/upload", async (req = request, res) => {
 });
 
 app.post("/test", async (req, res) => {
+  console.log("Body: ", req.body);
+  console.log("Files: ", req.files);
+
   res.json({
     message: "Test working",
   });
