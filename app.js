@@ -1,4 +1,5 @@
 const express = require("express");
+const { response, request } = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const faceApiService = require("./faceapiService");
@@ -11,8 +12,9 @@ app.use(cors());
 
 app.use(fileUpload());
 
-app.post("/upload", async (req, res) => {
-  console.log("Request: ", req.body);
+app.post("/upload", async (req = request, res) => {
+  console.log("Body: ", req.body);
+  console.log("Files: ", req.files);
 
   if (!req.files)
     return res.status(400).json({
