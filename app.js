@@ -12,7 +12,7 @@ app.use(cors());
 app.use(fileUpload());
 
 app.post("/upload", async (req, res) => {
-  console.log("Request: ", req.files);
+  console.log("Request: ", req.body);
 
   if (!req.files)
     return res.status(400).json({
