@@ -1,6 +1,7 @@
 const express = require("express");
 const { response, request } = require("express");
 const cors = require("cors");
+//const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const faceApiService = require("./faceapiService");
 
@@ -10,7 +11,11 @@ const port = process.env.PORT || 3000;
 // CORS
 app.use(cors());
 
+// Lectura y parseo del body
+app.use(express.json());
+
 app.use(fileUpload());
+//app.use(bodyParser.json());
 
 app.post("/upload", async (req = request, res) => {
   console.log("Body: ", req.body);
