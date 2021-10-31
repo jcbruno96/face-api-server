@@ -25,7 +25,7 @@ async function detect(tensor) {
     .withFaceLandmarks()
     .withFaceDescriptor();
 
-  return result.descriptor;
+  return result?.descriptor || null;
 }
 
 // Se inicializa face-api,tensorflow y se localiza los modelos
@@ -61,6 +61,9 @@ async function main(file, file2) {
   const tensor2 = await image(file2);
   // Se detecta la cara y se obtiene el descriptor
   const result2 = await detect(tensor2);
+
+  // Si no existe alguno de los resultados, devuelve error
+  if (!result || !result2) return false;
 
   // Se realiza la distancia euclidea entre los 128 puntos
   // de cada descriptor de cada cara
