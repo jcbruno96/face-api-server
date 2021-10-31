@@ -33,10 +33,14 @@ app.post("/upload", async (req = request, res) => {
       message: "File required",
     });
 
-  const similarity = await faceApiService.detect(file.data, file2.data);
+  const [similarity, message] = await faceApiService.detect(
+    file.data,
+    file2.data
+  );
 
   res.json({
     similarity,
+    message,
   });
 });
 

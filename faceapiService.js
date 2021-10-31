@@ -63,7 +63,8 @@ async function main(file, file2) {
   const result2 = await detect(tensor2);
 
   // Si no existe alguno de los resultados, devuelve error
-  if (!result || !result2) return false;
+  if (!result || !result2)
+    return [false, "Uno de los descriptores no es válido"];
 
   // Se realiza la distancia euclidea entre los 128 puntos
   // de cada descriptor de cada cara
@@ -74,7 +75,11 @@ async function main(file, file2) {
 
   // Se evalua si la distancia euclidea es menor el umbral,
   // es decir, estamos hablando de la misma persona.
-  return distance < threshold;
+  const similarity = distance < threshold;
+  return [
+    similarity,
+    similarity ? "Validación correcta" : "Error en la validación",
+  ];
 }
 
 module.exports = {
